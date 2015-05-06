@@ -26,7 +26,7 @@ geometry2.vertices.push(
 
 
 //geometry2.position.y = 10;
-var material2 = new THREE.MeshPhongMaterial( { color: 0x0000ff } );
+var material2 = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
 var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 var cube = new THREE.Mesh( geometry, material );
 var triangulo = new THREE.Mesh( geometry2, material );
