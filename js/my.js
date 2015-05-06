@@ -26,12 +26,18 @@ geometry2.vertices.push(
 
 
 //geometry2.position.y = 10;
-//var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var material2 = new THREE.MeshPhongMaterial( { color: 0x0000ff } );
 var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 var cube = new THREE.Mesh( geometry, material );
 var triangulo = new THREE.Mesh( geometry2, material );
+
+
+group = new THREE.Object3D();
+var loader = new THREE.JSONLoader();
+loader.load('js/macaco.json', modelLoadedCallback);
+
 scene.add( cube );
-scene.add( triangulo );
+//scene.add( triangulo );
 scene.add( light );
 camera.position.z = 5;
 
@@ -45,6 +51,8 @@ function render() {
   }
   cube.rotation.x += 0.015;
   cube.rotation.y += 0.015;
+  group.rotation.x += 0.015;
+  group.rotation.y += 0.015;
 
   //cube.clone();
 }
@@ -74,7 +82,14 @@ function pulo(){
     console.log(count);
 
 }
+function modelLoadedCallback(geometry) {
 
+        mesh = new THREE.Mesh( geometry, material2 );
+
+        group.add(mesh);
+        scene.add( group );
+
+}
 //canvas.addEventListener("mousedown", seleciona);
 document.addEventListener('keydown', function(event) {
       var keyCode = event.keyCode;
